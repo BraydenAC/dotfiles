@@ -1,0 +1,67 @@
+{
+    // General settings
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "spacing": 4,
+
+    // Module Order (add notification module to left in future)
+    "modules-left": ["custom/updater", "cpu"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["pulseaudio", "network", "battery", "clock", "custom/power"],
+
+    // Define Modules
+    "hyprland/workspaces": {
+	"on-click": "activate",
+	"on-scroll-up": "hyprctl dispatch workspace e+1",
+	"on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "clock": {
+	"format": "{:%H:%M}",
+	"tooltip-format": "<big>{:%A, %B %d, %Y}</big>",
+	"format-alt": "{:%Y-%m-%d %H:%M}"
+    },
+    "hyprland/window": {
+        "max-length": 50
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 2,
+        "tooltip": true
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": ["", "", ""],
+        "on-click": "pavucontrol"
+    },
+    "network": {
+        "format-wifi": " ({signalStrength}%)",
+        "format-ethernet": " Ethernet",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "on-click-right": "nm-connection-editor"
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""],
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "interval": 10
+    },
+    "custom/updater": {
+        "format": " {}",
+        "exec": "checkupdates | wc -l",
+        "interval": 900,
+        "on-click": "alacritty -e yay -Syu"
+    },
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "nwg-bar",
+        "on-click-right": "killall nwg-bar"
+    }
+}

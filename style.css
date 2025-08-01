@@ -1,0 +1,53 @@
+* {
+    /* --old-background: #FA8BFF; */
+    /* --old-color-2: #2BD2FF; */
+    /* --warning-color: #f9e2af; */
+
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    border: none;
+    padding: 0 10px;
+    color: #cdd6f4;
+    background: transparent;
+}
+
+#workspaces button.active {
+  background: #89b4fa;
+  color: #1e1e2e;
+  border-radius: 8px;
+}
+
+#custom-updater.warning {
+  color: #fab387;
+}
+
+#battery {
+  border-radius: 10px;
+}
+
+#battery.warning {
+  color: #f9e2af;
+}
+
+#battery.charging, #battery.plugged {
+    color: black;
+    background-color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        background-color: black;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: black;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
